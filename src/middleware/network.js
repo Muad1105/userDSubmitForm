@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios';
 // import { StoredKeys } from '../constants';
 
@@ -22,7 +23,14 @@ const handleResponse = (response) => {
         // } else {
         //     window.location.href = '/';
         // }
-        Promise.reject(response)
+        Promise.reject(response);
+    }
+    if(response && response.status.toString().startsWith("4")) {
+        message.error(response.data && response.data.message  ? response.data.message : "Something went wrong");
+        return Promise.reject(response);
+    }
+    if(response && response.status.toString().startsWith("2")) {
+        message.success("API success");
     }
     return response;
 };

@@ -1,24 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import reportWebVitals from './reportWebVitals';
-import configureAppStore from './store'
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { setupInterceptors } from './middleware/network';
-import { Router } from './router';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "antd/dist/antd.css";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
+import configureAppStore from "./store";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { setupInterceptors } from "./middleware/network";
+import { Router } from "./router";
 
-const store = configureAppStore()
+const store = configureAppStore();
 setupInterceptors();
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-		<Provider store={store}>
-			<BrowserRouter>
-				<Router />
-			</BrowserRouter>
-		</Provider>
-); 	
+  <Provider store={store}>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

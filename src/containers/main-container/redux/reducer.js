@@ -1,14 +1,23 @@
-import { ActionButtonEvents } from "./events";
+import Events from "./events";
 import axios from "axios";
 
 const initialState = {
-  actionTriggered: [{}],
+  createUserData: false
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionButtonEvents.POST_USER_DATA + "_FULFILLED": {
-      return action.payload;
+    case Events.POST_USER_DATA + "_FULFILLED": {
+      return {
+        ...state,
+        createUserData: true
+      }
+    }
+    case  Events.CLEAR_POSTUSER_DATA: {
+      return {
+        ...state,
+        createUserData: false
+      }
     }
 
     default:
